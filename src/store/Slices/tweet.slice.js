@@ -4,7 +4,7 @@ import { BASE_URL } from "../../constant.js"
 import axiosInstance from "../../utilities/axios.js"
 import toast from "react-hot-toast"
 
-initialState = {
+const initialState = {
     loading: false,
     tweets: [],
     totalTweets: 0,
