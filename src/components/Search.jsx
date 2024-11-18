@@ -14,7 +14,7 @@ function Search() {
     <>
         <form onSubmit={handleSubmit(onSubmit)}>
             <Input
-                placeholder='Search 🔎'
+                placeholder='🔎   Search '
                 {...register('query', { required: true })}
             />
         </form>
