@@ -54,10 +54,10 @@ function Navbar() {
         ) : (
           <div className=' sm:block space-x-2 hidden'>
             <Link to={"/login"}>
-              <Button className=" font-semibold hover:bg-[#454444] delay-200 border px-2 py-1 mx-1 sm:px-4 sm:py-2 ">Login</Button>
+              <Button className=" font-semibold hover:bg-[#454444] border px-2 py-1 mx-1 sm:px-4 sm:py-2 ">Login</Button>
             </Link>
             <Link to={"/signup"}>
-              <Button className=" font-semibold hover:bg-[#454444] delay-200 border px-2 py-1 sm:px-4 sm:py-2 ">Sign up</Button>
+              <Button className=" font-semibold hover:bg-[#454444] border px-2 py-1 sm:px-4 sm:py-2 ">Sign up</Button>
             </Link>
           </div>
         )

@@ -1,3 +1,4 @@
+import { MdHome } from "react-icons/md";
 import { IoCloseCircle } from "react-icons/io5";
 import { BiLike } from "react-icons/bi";
 import { HiOutlineVideoCamera } from "react-icons/hi";
@@ -42,5 +43,6 @@ export {
     FaRegCircleUser,
     FaRegEye,
     FaRegHeart,
-    MdOutlineCloudUpload
+    MdOutlineCloudUpload,
+    MdHome
 }
