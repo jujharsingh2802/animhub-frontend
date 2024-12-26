@@ -4,6 +4,9 @@ import Input from "./Input.jsx";
 import Search from "./Search.jsx";
 import Logo from "./Logo.jsx";
 import LoginPagePopUp from "./LoginPagePopUp.jsx";
+import Loading from "./Loading.jsx";
+import AuthStatus from "./AuthStatus.jsx";
+import SignUp from "./SignUp.jsx";
 export { 
     Button,
     Container,
@@ -11,4 +14,7 @@ export {
     Search,
     Logo,
     LoginPagePopUp,
+    Loading,
+    AuthStatus,
+    SignUp
 };
