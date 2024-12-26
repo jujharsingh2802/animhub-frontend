@@ -12,17 +12,16 @@ function GetImagePreview({
     cameraSize = 20,
     image,
 }) {
-    const [preview, setPreview] = useState(image || null);
-
+    const [preview, setPreview] = useState(image);
     const handlePreview = (e, onChange) => {
         const files = e.target.files;
         if (files && files.length > 0) {
-            setPreview(URL.createObjectURL(files[0])); // Set the preview for the UI
-            onChange(files); // Pass the file(s) back to the form
+            setPreview(URL.createObjectURL(files[0])); 
+            onChange(files);
+            return files;
         }
     };
     
-
     return (
         <div className="w-full">
             <label
@@ -34,7 +33,6 @@ function GetImagePreview({
                         {label}
                     </span>
                 )}
-
                 <img
                     src={preview || image}
                     alt={name}
@@ -46,7 +44,6 @@ function GetImagePreview({
                         className="hover:text-blue-50 text-white absolute inline-flex justify-center items-center w-full"
                     />
                 )}
-
                 <Controller
                     name={name}
                     control={control}
@@ -55,12 +52,9 @@ function GetImagePreview({
                         <input
                             id={name}
                             type="file"
-                            accept="*"
+                            accept="image/*"
                             className="hidden"
-                            onChange={(e) => {
-                                const file = handlePreview(e);
-                                onChange(file); // Pass the file object to react-hook-form
-                            }}
+                            onChange={(e) => handlePreview(e, onChange)}
                         />
                     )}
                     rules={{ required: `${name} is required` }}
