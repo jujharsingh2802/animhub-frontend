@@ -20,7 +20,7 @@ export const createAccount = createAsyncThunk(
       if (data.coverImage) {
         formData.append("coverImage", data.coverImage[0]);
       }
-      console.log("this is formdata" , formData);
+
       const response = await axiosInstance.post("/users/register", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -46,7 +46,7 @@ export const userLogin = createAsyncThunk(
 export const userLogout = createAsyncThunk(
     "logout",
     asyncThunkHandler(async()=>{
-        const response = await axiosInstance.post("/users/logout", data );
+        const response = await axiosInstance.post("/users/logout");
         console.log(response.data?.message);
         toast.success("Logout Successful");
         return response.data;

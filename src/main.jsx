@@ -5,7 +5,7 @@ import App from './App.jsx'
 import store from './store/store.js'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { LoginPagePopUp, SignUp, AuthStatus } from './components';
+import { LoginPagePopUp, SignUp, AuthStatus, Login } from './components';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +14,11 @@ const router = createBrowserRouter([
     children:[
       {
         path: "/login",
-        // element: <LoginPagePopUp />
+        element: (
+          <AuthStatus authentication={false}>
+          <Login />
+          </AuthStatus>
+        )
       },
       {
         path: "/signup",

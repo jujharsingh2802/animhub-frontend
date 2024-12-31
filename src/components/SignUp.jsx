@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Input, Loading, Logo } from "./index.js";
-import { createAccount, userLogin } from "../store/Slices/auth.slice";
+import { createAccount, userLogin } from "../store/Slices/auth.slice.js";
 import GetImagePreview from "./GetImagePreview.jsx";
 
 function SignUp() {
@@ -38,7 +38,7 @@ function SignUp() {
   if (loading) return <Loading />;
 
   return (
-    <div className="flex items-center justify-center mt-10 sm:mt-7">
+    <div className="flex items-center sm:mr-[260px] justify-center mt-10 sm:mt-7">
       <div className="mx-auto w-full max-w-lg border-slate-600 border-[1px] rounded-md p-6">
         <div className="flex justify-center">
           <span className="inline-block w-full mt-3 max-w-[100px]">

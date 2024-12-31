@@ -7,6 +7,7 @@ import LoginPagePopUp from "./LoginPagePopUp.jsx";
 import Loading from "./Loading.jsx";
 import AuthStatus from "./AuthStatus.jsx";
 import SignUp from "./SignUp.jsx";
+import Login from "./Login.jsx";
 export { 
     Button,
     Container,
@@ -16,5 +17,6 @@ export {
     LoginPagePopUp,
     Loading,
     AuthStatus,
-    SignUp
+    SignUp,
+    Login
 };
