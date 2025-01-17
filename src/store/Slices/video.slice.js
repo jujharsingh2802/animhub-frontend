@@ -23,7 +23,8 @@ export const getAllVideos = createAsyncThunk(
 
         if (userId) url.searchParams.set("userId", userId);
         if (page) url.searchParams.set("page", page);
-        if (query) url.searchParams.set("query", query);
+        if (!query) url.searchParams.set("query", "MongoDB");
+        else url.searchParams.set("query", query);
         if (limit) url.searchParams.set("limit", limit);
         if (sortType && sortBy) {
             url.searchParams.set("sortType", sortType);
@@ -31,6 +32,7 @@ export const getAllVideos = createAsyncThunk(
         }
 
         const response = await axiosInstance.get(url.toString());
+        console.log(response.data);
         return response.data;
     })
 );
@@ -108,14 +110,14 @@ const videoSlice = createSlice({
         builder.addCase(getAllVideos.pending, (state)=>{
             state.loading = true;
         })
-        builder.addCase(getAllVideos.fulfilled, (state, action)=>{
+        builder.addCase(getAllVideos.fulfilled, (state, action) => {
             state.loading = false;
             state.videos = {
-                data: [...action.payload.data, ...action.payload.docs],
-            }
-            state.videos.hasNextPage = action.payload.hasNextPage;
-        })
-
+              data: [...(state.videos.data || []), ...action.payload.data.docs],
+              hasNextPage: action.payload.data.page < action.payload.data.totalPages, 
+            };
+          });
+          
         builder.addCase(getVideo.pending, (state)=>{
             state.loading = true;
         })
@@ -136,7 +138,7 @@ const videoSlice = createSlice({
         builder.addCase(updateVideo.pending, (state)=>{
             state.uploading = true;
         })
-        builder.addCase(updateVideo.fulfilled, (state, action)=>{
+        builder.addCase(updateVideo.fulfilled, (state)=>{
             state.uploading = false;
             state.uploaded = true;
         })
@@ -149,7 +151,7 @@ const videoSlice = createSlice({
             state.videos.data = state.videos.data.filter(video => video._id !== action.payload._id);
         })
 
-        builder.addCase(togglePublish.fulfilled, (state, action)=>{
+        builder.addCase(togglePublish.fulfilled, (state)=>{
             state.loading = false;
             state.publishToggle = !state.publishToggle;
         })
