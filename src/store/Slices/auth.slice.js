@@ -58,7 +58,7 @@ export const refreshtoken = createAsyncThunk(
     asyncThunkHandler(async()=>{
         const response = await axiosInstance.post("/users/refresh-token");
         console.log(response.data);
-        toast.success(response.data?.message);
+        toast.success(response.data.message);
         return response.data;
     })
 )
@@ -76,7 +76,7 @@ export const newpassword = createAsyncThunk(
     "changePassword",
     asyncThunkHandler(async (data) =>{
         const response = await axiosInstance.post("/users/change-password");
-        toast.success(response.data?.message);
+        toast.success(response.data.message);
         return response.data;
     })
 )
