@@ -22,7 +22,7 @@ function AllVideos({
     <>
       <div
         className=" w-full sm:p-2 cursor-pointer"
-        onClick={() => navigate(`/watch/${videoId}`)}
+        onClick={() => navigate(`/video/${videoId}`)}
       >
         <div className=" relative sm:h-60 h-48">
           <img src={thumbnail} className=" object-cover w-full h-full" />
@@ -31,6 +31,7 @@ function AllVideos({
           </span>
         </div>
         <div className=" flex items-center py-2 px-2 gap-2">
+          <div className="overflow-hidden rounded-full w-10 h-10 border border-[50%] absolute">
           {avatar && (
             <div onClick={handleAvatarClick}>
               <img
@@ -39,8 +40,8 @@ function AllVideos({
               />
             </div>
           )}
-        </div>
-        <div>
+          </div>
+        <div className=" ml-14">
           <h2 className=" font-medium">{title}</h2>
           <div className=" text-xs space-x-1 text-slate-400">
             <span>{views} views</span>
@@ -53,7 +54,9 @@ function AllVideos({
               </h2>
             )
           }
+          </div>
         </div>
+        
       </div>
     </>
   );

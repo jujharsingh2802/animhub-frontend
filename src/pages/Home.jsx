@@ -19,7 +19,8 @@ function Home() {
   useEffect(() => {
     if(page === 0) {
       dispatch(getAllVideos({ page: 1, limit: 10 }));
-      page = 1;
+      setPage(1);
+      page = 1; // this is done to immediately update the page value, this is not a good practice but it is necessary for now, can be removed in slow servers or larger datas
     }
     return () => dispatch(makeVideosNull());
   },[dispatch]);
@@ -39,6 +40,24 @@ function Home() {
     }
   }, [page, hasNextPage, dispatch]);
 
+  useEffect(() => {
+    if (loading) {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false); 
+      }, 5000);
+      return () => clearTimeout(timer); 
+    } else {
+      setIsLoading(false);
+    }
+  }, [loading]);
+
+
+  if (isLoading) {
+    return (<HomeSkeleton />);
+  }
+
+  
   return (
     <Container>
       <InfiniteScroller 

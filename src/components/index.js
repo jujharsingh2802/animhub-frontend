@@ -8,6 +8,7 @@ import Loading from "./Loading.jsx";
 import AuthStatus from "./AuthStatus.jsx";
 import SignUp from "./SignUp.jsx";
 import Login from "./Login.jsx";
+import Like from "./Like.jsx";
 export { 
     Button,
     Container,
@@ -18,5 +19,6 @@ export {
     Loading,
     AuthStatus,
     SignUp,
-    Login
+    Login,
+    Like
 };

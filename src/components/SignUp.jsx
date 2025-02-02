@@ -28,7 +28,7 @@ function SignUp() {
       const password = data?.password;
       const login = await dispatch(userLogin({ username, password }));
       if (login?.type === "login/fulfilled") {
-        navigate("/home");
+        navigate("/");
       } else {
         navigate("/login");
       }

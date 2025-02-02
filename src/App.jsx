@@ -8,11 +8,11 @@ import { Outlet } from 'react-router-dom'
 
 function App() {
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(currentUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
 
 
   return (

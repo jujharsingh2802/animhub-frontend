@@ -40,7 +40,8 @@ export const getAllVideos = createAsyncThunk(
 export const getVideo = createAsyncThunk(
     "getVideoById",
     asyncThunkHandler(async ({videoId}) => {
-        const response = await axiosInstance.get(`${BASE_URL}/v/${videoId}`);
+        const response = await axiosInstance.get(`${BASE_URL}/videos/v/${videoId}`);
+        console.log(response.data)
         return response.data.data;
     })
 );
@@ -103,7 +104,7 @@ const videoSlice = createSlice({
             state.uploaded = false;
         },
         makeVideosNull: (state) =>{
-            state.videos.docs = [];
+            state.videos.data = [];
         }
     },
     extraReducers: (builder) => {

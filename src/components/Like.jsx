@@ -25,7 +25,7 @@ function Like({isLiked, likesCount = 0, tweetId, commentId, videoId, size}) {
             dispatch(likeComment(commentId));
         }
         else if(videoId){
-            dispatch(likeVideo(videoId));
+            dispatch(likeVideo({videoId}));
         }
     }
 
@@ -35,16 +35,18 @@ function Like({isLiked, likesCount = 0, tweetId, commentId, videoId, size}) {
     },[isLiked, likesCount]);
     
   return (
-    <div className=' flex items-center gap-1'>
+    <div className=' flex items-center gap-1 '>
+        
         <BiSolidLike 
             onClick={handleToggleLike}
             size={size}
             className={`cursor-pointer ${isLocallyLiked ? 'text-blue-500' : ''}`}
         />
-        <span className=' mr-2 text-xs'>{localLikesCount}</span>
+        <span className=' mr-2 text-xs ml-1'>{localLikesCount}</span>
+        <span className='border mr-2 h-5'></span>
         <BiSolidDislike
             size={size}
-            className={`cursor-pointer}`}
+            className={`{ cursor-pointer}`}
         />
     </div>
   )

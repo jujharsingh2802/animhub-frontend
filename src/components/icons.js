@@ -20,8 +20,12 @@ import { RiHome6Line } from "react-icons/ri";
 import { BiSolidLike } from "react-icons/bi";
 import { BiSolidDislike } from "react-icons/bi";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { PiShareFat } from "react-icons/pi";
+import { BsDownload } from "react-icons/bs";
 
 export {
+    BsDownload,
+    PiShareFat,
     IoCloseCircle,
     BiLike,
     HiOutlineVideoCamera,

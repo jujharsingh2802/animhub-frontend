@@ -9,7 +9,6 @@ function Video({src , thumbnail}) {
         controls
         autoPlay
         className=' sm:h-[70vh] sm:max-w-4xl h-64 w-full object-contain'
-
     />
   )
 }

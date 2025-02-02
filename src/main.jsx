@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { SignUp, AuthStatus, Login } from './components/index.js';
 import Home from './pages/Home.jsx'
+import VideoPage from './pages/VideoPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
         element: (
           <AuthStatus authentication={false}>
             <SignUp />
+          </AuthStatus>
+        )
+      },
+      {
+        path: "/video/:videoId",
+        element: (
+          <AuthStatus authentication={true}>
+            <VideoPage/>
           </AuthStatus>
         )
       }

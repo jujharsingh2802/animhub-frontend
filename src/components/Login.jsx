@@ -14,6 +14,7 @@ function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const loading = useSelector((state) => state.auth?.loading)
+    const [isLoading, setIsLoading] = React.useState(loading);
     const submit = async (data) => {
         const { email, password } = data
         const response = await dispatch(userLogin({email, password}))
@@ -23,7 +24,22 @@ function Login() {
             navigate('/login')
         }
     }
-    if(loading) return <Loading />
+    React.useEffect(() => {
+      if (loading) {
+        setIsLoading(true);
+        const timer = setTimeout(() => {
+          setIsLoading(false); 
+        }, 5000);
+        return () => clearTimeout(timer); 
+      } else {
+        setIsLoading(false);
+      }
+    }, [loading]);
+  
+  
+    if (isLoading) {
+      return <Loading />
+    }
     return (
         <div className="flex items-center lg:mr-[270px] justify-center mt-10 sm:mt-7">
           <div className="mx-auto w-full max-w-lg border-slate-600 border-[1px] rounded-md p-6">
@@ -66,7 +82,7 @@ function Login() {
 
               {/* Submit Button */}
               <Button type="submit" className="w-full bg-blue-500 text-white h-8">
-                Sign Up
+                Login
               </Button>
             </form>
           </div>

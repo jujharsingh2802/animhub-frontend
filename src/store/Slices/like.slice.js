@@ -9,9 +9,9 @@ const initialState = {
 
 export const likeVideo = createAsyncThunk(
     "toggleVideoLike",
-    asyncThunkHandler(async(videoId)=>{
+    asyncThunkHandler(async({videoId})=>{
         const response = await axiosInstance.post(`/likes/toggle/v/${videoId}`);
-        console.log("Liked");
+        console.log(response.data);
         return response.data.data;
     })
 )
