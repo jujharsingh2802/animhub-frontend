@@ -29,3 +29,10 @@ export function formatDuration(seconds){
     if(hours > 0) return hours + ":" + (minutes < 10 ? "0" + minutes : minutes);
     return minutes + ":" + (remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds);
 }
+
+export function viewFormatter(views){
+    if(views < 5000) return views;
+    else if(views < 1000000) return (views / 1000).toFixed(1) + "K";
+    else if(views < 1000000000) return (views / 1000000).toFixed(1) + "M";
+    else return (views / 1000000000).toFixed(1) + "B";
+}

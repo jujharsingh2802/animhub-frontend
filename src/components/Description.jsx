@@ -4,6 +4,7 @@ import { Button, Like } from "./index.js";
 import { toggleSubscription } from "../store/Slices/subscription.slice.js";
 import { BsDownload, PiShareFat } from "./icons.js";
 import toast from "react-hot-toast";
+import { timeSince, viewFormatter } from "../utilities/time.js";
 
 function Description({
   isSubscribed,
@@ -22,8 +23,9 @@ function Description({
 }) {
   const dispatch = useDispatch();
   const [localIsSubscribed, setLocalIsSubscribed] = useState(isSubscribed);
-  const [localSubscribersCount, setLocalSubscribersCount] =
-    useState(subscribersCount);
+  const [localSubscribersCount, setLocalSubscribersCount] = useState(subscribersCount);
+
+  const [isOpenedDescription, setIsOpenedDescription] = useState(false);
 
   const handleSubscribe = () => {
     setLocalIsSubscribed(!localIsSubscribed);
@@ -53,6 +55,12 @@ function Description({
         }, 2000)
         
     }
+
+    const extractHashtags = (text = "") => {
+      return (text.match(/#[a-zA-Z0-9_]+/g) || []).join(" ");
+    };
+    
+    
   return (
     <div>
       <section className="sm:max-w-4xl w-full text-white sm:p-5 p-2 space-y-2">
@@ -94,6 +102,31 @@ function Description({
               <Button onClick={handleDownload} className=" flex ml-2 bg-[#282828] rounded-full hover:bg-[#3d3d3d] px-4 py-2" >
                 <span className="pr-2">Download</span> <BsDownload size={23} />
               </Button>
+            </div>
+            <div className=" cursor-pointer rounded-lg bg-[#282828] p-2 hover:bg-[#393939e8]" onClick={()=>setIsOpenedDescription(!isOpenedDescription)}>
+              
+              { 
+                !isOpenedDescription ? 
+                (
+                  <>
+                  <span className="text-sm font-semibold pr-2">
+                    {viewFormatter(views)} views <span className=" pl-1"></span> {timeSince(createdAt) }
+                  </span>
+                  <span className="text-sm text-[#3EA6FF] font-light">{extractHashtags(description)}</span>
+                  <div className=" whitespace-pre-line">{`${description?.slice(0,100)}`}  {description?.length > 100 ? <span className=" font-semibold">...more</span> : null}</div>
+                  </>
+                )
+                : (
+                  <>
+                  <span className="text-sm font-semibold pr-2">
+                    {views} views <span className=" pl-1"></span> {timeSince(createdAt) }
+                  </span>
+                  <span className="text-sm text-[#3EA6FF] font-light ">{extractHashtags(description)}</span>
+                  <div className=" whitespace-pre-line">{description}</div>
+
+                  </>
+                )
+              }                            
             </div>
           </div>
         </div>
