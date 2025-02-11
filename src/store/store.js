@@ -7,7 +7,7 @@ import dashboardSliceReducer from './Slices/dashboard.js'
 import videoSliceReducer from './Slices/video.slice.js'
 import commentSliceReducer from './Slices/comment.slice.js'
 import subscriptionSliceReducer from './Slices/subscription.slice.js'
-
+import likeSliceReducer from './Slices/like.slice.js'
 const store = configureStore({
   reducer: {
     auth: authSliceReducer,
@@ -18,6 +18,7 @@ const store = configureStore({
     video: videoSliceReducer,
     comment: commentSliceReducer,
     subscription: subscriptionSliceReducer,
+    like: likeSliceReducer,
   },
 });
 

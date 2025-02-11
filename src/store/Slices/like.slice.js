@@ -38,6 +38,7 @@ export const getLikedVideos = createAsyncThunk(
     "getLikedVideos",
     asyncThunkHandler(async()=>{
         const response = await axiosInstance.get(`/likes/videos`);
+        console.log(response.data.data);
         return response.data.data;
     })
 )

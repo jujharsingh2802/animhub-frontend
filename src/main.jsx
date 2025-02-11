@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { SignUp, AuthStatus, Login } from './components/index.js';
 import Home from './pages/Home.jsx'
 import VideoPage from './pages/VideoPage.jsx'
+import LikedVideos from './pages/LikedVideos.jsx'
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
         element: (
           <AuthStatus authentication={true}>
             <VideoPage/>
+          </AuthStatus>
+        )
+      },
+      {
+        path: "/liked-videos",
+        element: (
+          <AuthStatus authentication={true}>
+            <LikedVideos />
           </AuthStatus>
         )
       }
